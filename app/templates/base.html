@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+   <head>
+		<!-- Page Title -->
+		<title> My App </title>
+		
+		<!-- HTML Settings -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	  
+		<!-- CSS imports -->
+		<link href="{{ static_url('css/bootstrap.min.css') }}" rel="stylesheet">
+		<link rel="stylesheet" href="{{ static_url('css/jquery.mobile-1.4.5.min.css') }}"/>
+		
+		<!-- Javascript imports -->
+		<!-- <script type='text/javascript' src="js/jquery-1.11.2.min.js') }}"></script> -->
+		<script type='text/javascript' src="{{ static_url('js/jquery-2.1.4.min.js') }}"></script>
+		<script type='text/javascript' src="{{ static_url('js/jquery.mobile-1.4.5.min.js') }}"></script>
+        <script type='text/javascript' src="{{ static_url('js/Chart.min.js') }}"></script>
+		<!-- <script>jQuery.noConflict();</script> -->
+   </head>
+   <body>
+   
+	<!-- JQuery page -->
+	<div data-role="page" id='home' data-theme="a">		
+        <div data-role="header" style="background-color: #FFFFFF; height:5em; vertical-align: center">
+        <a href="/">
+          <img src="{{ static_url('img/logo.png') }}" width="100" />
+        </a>
+		<h1 style="vertical-align: center">My App</h1>
+		<!-- <a href="./" data-shadow="false" data-iconshadow="false" data-icon="carat-l" data-iconpos="notext" data-rel="back" data-ajax="false">Back</a> -->
+        </div><!-- /header -->
+        
+		<!-- page -- main body -->
+		<div data-role="content">
+			<h1 class="header-banner">
+            {% block header %} Default Header {% end %}
+            </h1>
+			<br>
+        
+        {% block content %} No Content {% end %}
+
+
+		</div><!-- /content -->
+		
+		<!-- page -- footer -->
+		<div data-role="footer" data-position="fixed" data-tap-toggle="false" style="text-align:center;">
+			<h5>Created by wallarug</h5>
+		</div>
+		<!-- /footer -->
+	</div>
+	
+   </body>
+ </html>

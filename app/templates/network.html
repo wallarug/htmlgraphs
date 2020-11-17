@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block header %} Network Overview {% end %}
+
+
+{% block content %} 
+<script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+</script>
+
+<div data-role='tabs' id="tabs">
+  <div data-role="navbar">
+  <ul>
+    {% for vlan in data.keys() %}
+    <li><a href="#tabs-{{ vlan }}">{{ vlan }}</a></li>
+    {% end %}
+  </ul>
+  </div>
+  
+  {% for vlan in data.keys() %}
+  <div id="tabs-{{ vlan }}">
+    <table data-role="table" data-mode="reflow" class="ui-responsive">
+        <thead>
+        <tr>
+            <th> IP </th>
+            <th> Hostname </th>
+            <th> MAC </th>
+            <!-- <th> Vendor </th> -->
+            <th> Last Seen </th>
+            <th> Active </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for record in data[vlan] %}
+            <tr>
+                <td> {{ record }} </td>
+                <td> {{ data[vlan][record]['hostname'] }} </td>
+                <td> {{ data[vlan][record]['mac'] }}</td>
+                <td> {{ data[vlan][record]['lastactive'] }} </td>
+                <td> {% if data[vlan][record]['active'] %} 
+                      <img src="{{ static_url('img/greendot.png') }}" width="15" height="15">
+                     {% else %}
+                      <img src="{{ static_url('img/reddot.png') }}" width="15" height="15">
+                     {% end %}
+                </td>
+            </tr>
+        {% end %}
+        </tbody>
+    </table>
+  </div>
+  {% end %}
+
+</div>
+
+
+
+{% end %}
